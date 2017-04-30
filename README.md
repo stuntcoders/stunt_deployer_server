@@ -24,5 +24,27 @@ All deployment hoos are defined in **hooks.json** file.
 ```
 Hitting `http://example.com:3000/unique-hook-name` will trigger deployment script.
 
+## Run deployer server as a service
+First create `/etc/systemd/system/stunt-deployer-server.service`
+```
+[Unit]
+Description=StuntCoders Deployment Server
+
+[Service]
+WorkingDirectory=/root/stunt_deployer/
+ExecStart=/usr/local/bin/stunt-deployer-server --hooks /root/stunt_deployer/hooks.json
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Then start the service
+```
+systemctl daemon-reload
+systemctl enable stunt-deployer-server
+systemctl start stunt-deployer-server
+```
+
 ## Licence
 Licensed under the MIT license.
