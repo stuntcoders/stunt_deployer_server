@@ -5,6 +5,7 @@
 let connect = require('connect');
 let http = require('http');
 var argv = require('minimist')(process.argv.slice(2));
+let shell = require('shelljs');
 
 let hooks = require(argv.hooks || './hooks.json');
 
@@ -15,12 +16,12 @@ app.use((req, res) => {
 
   if (hooks.hasOwnProperty(request)) {
     let hook = hooks[request];
-    let shell = require('shelljs');
 
     console.log(`[${request}] - Starting deploy`);
 
-    shell.cd(hook.cwd || '.');
-    shell.exec(hook.exec);
+    shell.exec(hook.exec, {
+      cwd: hook.cwd || '.'
+    });
 
     console.log(`[${request}] - Deploy finished`);
   }
