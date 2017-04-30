@@ -1,3 +1,7 @@
+#!/usr/bin/env node
+
+'use strict';
+
 let connect = require('connect');
 let http = require('http');
 let shell = require('shelljs');
