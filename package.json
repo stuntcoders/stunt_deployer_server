@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "dependencies": {
     "connect": "^3.6.1",
+    "minimist": "^1.2.0",
     "shelljs": "^0.7.7"
   }
 }
