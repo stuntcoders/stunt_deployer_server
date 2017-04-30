@@ -3,7 +3,9 @@
 let connect = require('connect');
 let http = require('http');
 let shell = require('shelljs');
-let hooks = require('./hooks.json');
+var argv = require('minimist')(process.argv.slice(2));
+
+let hooks = require(argv.hooks /* || './hooks.json' */);
 
 let app = connect();
 
