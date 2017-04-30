@@ -1,0 +1,6 @@
+{
+	"unique-hook-name": {
+		"cwd": "./path-to-deploy-script",
+		"exec": "bash deploy.sh"
+	}
+}
