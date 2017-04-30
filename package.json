@@ -1,6 +1,9 @@
 {
   "name": "stunt-deployer-server",
   "version": "0.1.0",
+  "bin": {
+    "stunt-deployer-server": "deployer.js"
+  },
   "dependencies": {
     "connect": "^3.6.1",
     "minimist": "^1.2.0",
