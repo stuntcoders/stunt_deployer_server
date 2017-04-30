@@ -5,7 +5,7 @@ let http = require('http');
 let shell = require('shelljs');
 var argv = require('minimist')(process.argv.slice(2));
 
-let hooks = require(argv.hooks /* || './hooks.json' */);
+let hooks = require(argv.hooks || './hooks.json');
 
 let app = connect();
 
