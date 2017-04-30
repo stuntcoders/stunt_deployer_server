@@ -1,0 +1,8 @@
+{
+  "name": "stunt-deployer-server",
+  "version": "0.1.0",
+  "dependencies": {
+    "connect": "^3.6.1",
+    "shelljs": "^0.7.7"
+  }
+}

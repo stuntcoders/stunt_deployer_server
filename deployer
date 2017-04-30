@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+
+let connect = require('connect');
+let http = require('http');
+let shell = require('shelljs');
+let hooks = require('./hooks.json');
+
+let app = connect();
+
+app.use((req, res) => {
+  let request = req.url.replace(/^\/+/, '').replace(/\/+$/, '');
+
+  if (hooks.hasOwnProperty(request)) {
+  	let hook = hooks[request];
+
+  	console.log(`[${request}] - Starting deploy`);
+
+  	shell.cd(hook.cwd || '.');
+  	shell.exec(hook.exec);
+
+  	console.log(`[${request}] - Deploy finished`);
+  }
+  
+  res.end();
+});
+
+http.createServer(app).listen(3000);
