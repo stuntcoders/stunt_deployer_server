@@ -26,4 +26,4 @@ app.use((req, res) => {
   res.end();
 });
 
-http.createServer(app).listen(3000);
+http.createServer(app).listen(argv.port || 3000);
