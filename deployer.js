@@ -19,7 +19,7 @@ app.use((req, res) => {
 
     const child = shell.exec(hook.exec, {
       cwd: hook.cwd || '.',
-    }, function (error, stdout, stderr) {
+    }, (error, stdout, stderr) => {
       res.write(error ? stderr : stdout);
       res.end();
     });
