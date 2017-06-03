@@ -23,6 +23,10 @@ app.use((req, res) => {
       res.write(error ? stderr : stdout);
       res.end();
     });
+
+    req.on('end', () => {
+      child.kill();
+    });
   }
 });
 
