@@ -28,6 +28,9 @@ app.use((req, res) => {
     req.on('end', () => {
       child.kill();
     });
+  } else {
+    res.writeHead(404, {'Content-Type': 'text/plain'});
+    res.end();
   }
 });
 
