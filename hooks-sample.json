@@ -1,6 +1,6 @@
 {
 	"unique-hook-name": {
-		"cwd": "./path-to-deploy-script",
-		"exec": "bash deploy.sh"
+		"cwd": "./",
+		"exec": "echo 'Running Test Hook'"
 	}
 }
