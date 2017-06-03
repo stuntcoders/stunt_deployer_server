@@ -17,6 +17,7 @@ app.use((req, res) => {
   if (hooks.hasOwnProperty(request)) {
     let hook = hooks[request];
 
+    res.writeHead(200, {'Content-Type': 'text/plain'});
     const child = shell.exec(hook.exec, {
       cwd: hook.cwd || '.',
     }, (error, stdout, stderr) => {
