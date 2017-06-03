@@ -2,20 +2,20 @@
 
 'use strict';
 
-let connect = require('connect');
-let http = require('http');
-var argv = require('minimist')(process.argv.slice(2));
-let shell = require('shelljs');
+const connect = require('connect');
+const http = require('http');
+const argv = require('minimist')(process.argv.slice(2));
+const shell = require('shelljs');
 
-let hooks = require(argv.hooks || './hooks.json');
+const hooks = require(argv.hooks || './hooks.json');
 
-let app = connect();
+const app = connect();
 
 app.use((req, res) => {
-  let request = req.url.replace(/^\/+/, '').replace(/\/+$/, '');
+  const request = req.url.replace(/^\/+/, '').replace(/\/+$/, '');
 
   if (hooks.hasOwnProperty(request)) {
-    let hook = hooks[request];
+    const hook = hooks[request];
 
     res.writeHead(200, {'Content-Type': 'text/plain'});
     const child = shell.exec(hook.exec, {
