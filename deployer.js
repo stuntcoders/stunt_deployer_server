@@ -21,18 +21,12 @@ app.use((req, res) => {
 
     const child = shell.exec(hook.exec, {
       cwd: hook.cwd || '.',
-    }, (error, stdout, stderr) => {
-      res.write(error ? stderr : stdout);
-      res.end();
-    });
-
-    req.on('end', () => {
-      child.kill();
     });
   } else {
     res.writeHead(404, {'Content-Type': 'text/plain'});
-    res.end();
   }
+
+  res.end();
 });
 
 http.createServer(app).listen(argv.port || 3000);
