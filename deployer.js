@@ -12,7 +12,7 @@ const hooks = require(argv.hooks);
 const app = connect();
 
 app.use((req, res) => {
-  const request = req.url.replace(/^\/+/, '').replace(/\/+$/, '');
+  const request = req._parsedUrl.pathname.replace(/^\/+/, '');
 
   if (hooks.hasOwnProperty(request)) {
     const hook = hooks[request];
