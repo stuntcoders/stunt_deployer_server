@@ -21,6 +21,7 @@ app.use((req, res) => {
 
     const child = shell.exec(hook.exec, {
       cwd: hook.cwd || '.',
+      async: true,
     });
   } else {
     res.writeHead(404, {'Content-Type': 'text/plain'});
