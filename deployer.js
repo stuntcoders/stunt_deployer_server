@@ -7,7 +7,7 @@ const http = require('http');
 const argv = require('minimist')(process.argv.slice(2));
 const shell = require('shelljs');
 
-const hooks = require(argv.hooks || './hooks.json');
+const hooks = require(argv.hooks);
 
 const app = connect();
 
@@ -18,6 +18,7 @@ app.use((req, res) => {
     const hook = hooks[request];
 
     res.writeHead(200, {'Content-Type': 'text/plain'});
+
     const child = shell.exec(hook.exec, {
       cwd: hook.cwd || '.',
     }, (error, stdout, stderr) => {
