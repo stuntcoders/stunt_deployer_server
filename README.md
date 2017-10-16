@@ -8,9 +8,9 @@ npm install --global stunt-deployer-server
 
 ## Usage
 ```sh
-stunt-deployer-server [--hooks <path_to_hooks_json>] [--port <server_port>]
+stunt-deployer-server --hooks <path_to_hooks_json> [--port <server_port>] [--ssl_key <key_path>] [--ssl_cert <cert_path>] 
 ```
-Default port: 3000
+Default ports: 3000 (3443)
 
 ## Configuring deployment hooks
 All deployment hoos are defined in **hooks.json** file.
