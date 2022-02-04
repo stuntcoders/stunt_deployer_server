@@ -1,5 +1,6 @@
 # StuntCoders Deployer Server - [![npm version](https://badge.fury.io/js/stunt-deployer-server.svg)](https://badge.fury.io/js/stunt-deployer-server)
-Minimalist nodejs server for automatic deployment
+
+Minimalist Node.js server for automatic deployments.
 
 ## Install
 ```sh
@@ -16,13 +17,22 @@ Default ports: 3000 (3443)
 All deployment hoos are defined in **hooks.json** file.
 ```json
 {
-	"unique-hook-name": {
-		"cwd": "./path-to-deploy-script",
-		"exec": "bash deploy.sh"
-	}
+  "unique-hook-name": {
+    "cwd": "./path-to-deploy-script",
+    "exec": "bash deploy.sh"
+  },
+  "fabric-unique-hook-name": {
+    "cwd": "./path-to-deploy-script",
+    "exec": "fab staging deploy"
+  },
+  "capistrano-unique-hook-name": {
+    "cwd": "./path-to-deploy-script",
+    "exec": "cap production deploy"
+  }
 }
 ```
-Hitting `http://example.com:3000/unique-hook-name` will trigger deployment script.
+
+Hitting `http://example.com:3000/unique-hook-name` via browser, or `curl` will trigger deployment script in it's folder, and run the command under `exec`.
 
 ## Run deployer server as a service
 First create `/etc/systemd/system/stunt-deployer-server.service`
